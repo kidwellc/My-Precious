@@ -2,6 +2,14 @@
 defineProps<{
   msg: string
 }>()
+
+const pics = [
+  {src:"20230207_201942.jpg"}, 
+  {src:"20230614_083806.jpg"}
+]
+
+const glob = import.meta.glob('@/assets/pics/*.jpg', { eager: true })
+
 </script>
 
 <template>
@@ -12,5 +20,9 @@ defineProps<{
       <!-- <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. -->
     </h3>
+    <div v-for="pic in glob">
+      <img :src="pic.default" alt="kitty" >
+    </div>
+    
   </div>
 </template>
